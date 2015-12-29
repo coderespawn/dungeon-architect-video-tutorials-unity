@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+    <title>Dungeon Architect User Guide</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../theme/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../theme/css/theme.css">
+  
+    <script src="../theme/js/jquery.min.js"></script>
+    <script src="../theme/js/bootstrap.min.js"></script>
+  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<script>
+ $(document).ready(function () {
+	 $("#TOC").appendTo("#toc_host");
+	 $("#TOC").attr("data-spy", "affix");
+	 $("#TOC").attr("data-offset-top", "5");
+	$("#TOC").addClass("bs-sidebar");
+	$("#TOC").addClass("hidden-print");
+	 /*
+	*/
+        var url = window.location.href;
+        url = url.replace(window.location.hash, "");
+
+	    // Will only work if string in href matches with location
+        $('ul.nav a[href="' + url + '"]').parent().addClass('active');
+
+    // Will also work for relative and absolute hrefs
+        $('ul.nav a').filter(function () {
+            return this.href == url;
+        }).parent().addClass('active').parent().parent().addClass('active');
+
+    });
+
+// Smooth scroll
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 500);
+        return false;
+      }
+    }
+  });
+});
+
+</script>
+
+<script>
+
+
+$( document ).ready(function() {
+	$('img.svg').each(function(){
+		var $img = jQuery(this);
+		var imgID = $img.attr('id');
+		var imgClass = $img.attr('class');
+		var imgURL = $img.attr('src');
+
+		jQuery.get(imgURL, function(data) {
+                // Get the SVG tag, ignore the rest
+                var $svg = jQuery(data).find('svg');
+
+                // Add replaced image's ID to the new SVG
+                if(typeof imgID !== 'undefined') {
+                	$svg = $svg.attr('id', imgID);
+                }
+                // Add replaced image's classes to the new SVG
+                if(typeof imgClass !== 'undefined') {
+                	$svg = $svg.attr('class', imgClass+' replaced-svg');
+                }
+
+                // Remove any invalid XML tags as per http://validator.w3.org
+                $svg = $svg.removeAttr('xmlns:a');
+
+                // Replace image with new SVG
+                $img.replaceWith($svg);
+
+            }, 'xml');
+
+	});
+});
+ </script>
+
+<div id="wrap">
+
+  	<div class="container">
+<script>
+$(document).ready(function() {
+	$('#TOC ul').each(function() {
+		$(this).addClass("nav");
+
+	});
+
+	$('#TOC').children('ul').each(function() {
+		$(this).addClass("bs-sidenav");
+	});
+
+  $('a[href="#TOC"]').each(function() {
+    $(this).after($(this).text());
+    $(this).remove();
+  })
+
+
+	$('.documentationBlock img').each(function() {
+
+		$(this).addClass("width: 100%");
+		$(this).addClass("height:100%");
+		$(this).addClass('img-responsive');
+
+	});
+	$('body').scrollspy({ target: '#TOC' })
+
+	$('img').on('load', function(e) {
+    	$('body').scrollspy('refresh');
+    });
+
+});
+</script>
+
+<div class="row documentationBlock">
+		<div class="col-md-3" id="toc_host">
+
+		</div>
+		<div class="col-md-9" style="font-family: 'Open Sans', sans-serif;">
+<div class="branding-logo">
+	<img src="../assets/images/unity_logo.png">
+</div>
+			<div class="version-block">
+			  <div class="dropdown" style="display: inline">
+			    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Version
+			    <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			    				<li><a href="video_tutorials_1.0.0.html">1.0.0</a></li>
+			    </ul>
+			  </div>
+			  <div class="version-number">1.0.0</div>
+			</div>
+			<div class="doc-title">Dungeon Architect Video Tutorials (Unity)</div>
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#marker-emitters">Marker Emitters</a></li>
+<li><a href="#selection-rule">Selection Rule</a></li>
+<li><a href="#transform-rule">Transform Rule</a></li>
+<li><a href="#paint-mode">Paint Mode</a></li>
+<li><a href="#volumes">Volumes</a></li>
+<li><a href="#terrain-modifier">Terrain Modifier</a></li>
+<li><a href="#event-listener">Event Listener</a></li>
+<li><a href="#marker-emitter-scripts">Marker Emitter Scripts</a></li>
+<li><a href="#custom-dungeon-builders">Custom Dungeon Builders</a></li>
+</ul>
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>Introduction to Dungeon Architect</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/GlcrjBUxPCk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="overview">Overview</h1>
+<p>Overview of the various features of Dungeon Architect</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/L1xv99cVEwI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="marker-emitters">Marker Emitters</h1>
+<p>Marker Emitters</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/Hwl83IAycGA?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="selection-rule">Selection Rule</h1>
+<p>Selection rule</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/wozwV-ssyXo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="transform-rule">Transform Rule</h1>
+<p>Transform rule</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/lp-y9JuLQbk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="paint-mode">Paint Mode</h1>
+<p>Paint Mode</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/GmX0bhMZw4I?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="volumes">Volumes</h1>
+<p>Volumes</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/GdZuL0BMuKw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="terrain-modifier">Terrain Modifier</h1>
+<p>Terrain Modifier</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/0KWv9neIzac?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="event-listener">Event Listener</h1>
+<p>Event Listener</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/KfSOqQUTf28?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="marker-emitter-scripts">Marker Emitter Scripts</h1>
+<p>Marker Emitter Scripts</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/V2UsRoB_nbk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<h1 id="custom-dungeon-builders">Custom Dungeon Builders</h1>
+<p>Custom Dungeon Builders</p>
+<p><iframe width="853" height="480" src="https://www.youtube.com/embed/cKQkNIbdR0Q?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
+<div id="footer">
+  &copy; 2015 <a href="http://coderespawn.com/">Code Respawn Technologies Pvt Ltd</a>
+</div>
+
+</div>
+
+</div>
+</body>
+</html>
